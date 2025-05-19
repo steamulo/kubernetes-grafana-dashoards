@@ -26,7 +26,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "description": "Total  Count of log lines in the specified time range",
       "fieldConfig": {
@@ -92,9 +92,9 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "datasource": {
+          "": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"})[$__interval]))",
           "hide": false,
@@ -105,9 +105,9 @@
       "type": "stat"
     },
     {
-      "datasource": {
+      "": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "description": "Total Count: of $searchable_pattern in the specified time range",
       "fieldConfig": {
@@ -168,10 +168,7 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          "datasource": {
-            "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
-          },
+          RENAME
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
           "hide": false,
           "refId": "A"
@@ -183,7 +180,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "description": "Live logs is a like 'tail -f' in a real time",
       "gridPos": {
@@ -207,7 +204,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "{namespace=\"$namespace\", pod=~\"$pod\", job=~\"$job\", stream=~\"$stream\"} |~ \"(?i)$searchable_pattern\" ",
           "hide": false,
@@ -229,7 +226,7 @@
       },
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -306,7 +303,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", pod=~\"$pod\", job=~\"$job\"})[$__interval])) by (stream)",
           "hide": false,
@@ -326,7 +323,7 @@
       },
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "decimals": 0,
       "fieldConfig": {
@@ -392,7 +389,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", pod=~\"$pod\", job=~\"$job\", stream=~\"$stream\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (pod)",
           "refId": "A"
@@ -405,7 +402,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -465,7 +462,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"} |~ \"(?i)$searchable_pattern\")[$__interval])) * 100 / sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"})[$__interval]))",
           "hide": false,
@@ -478,7 +475,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -565,7 +562,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", pod=~\"$pod\", job=~\"$job\", stream=~\"$stream\"} |~ \"(?i)$searchable_pattern\")[$__interval])) by (pod)",
           "refId": "A"
@@ -577,7 +574,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -661,7 +658,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(rate(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"} |~ \"(?i)$searchable_pattern\")[30s])) by (pod)",
           "hide": false,
@@ -674,7 +671,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "P8E80F9AEF21F6940"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -811,7 +808,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": "${datasource}"
           },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", pod=~\"$pod\", job=~\"$job\"})[$__interval])) by (stream)",
           "hide": false,
@@ -839,7 +836,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
+          "uid": "${datasource}"
         },
         "definition": "label_values({namespace=~\".+\"}, namespace)",
         "hide": 0,
@@ -866,7 +863,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
+          "uid": "${datasource}"
         },
         "definition": "",
         "hide": 0,
@@ -898,7 +895,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
+          "uid": "${datasource}"
         },
         "definition": "label_values({namespace=\"$namespace\"}, pod)",
         "hide": 0,
@@ -925,7 +922,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "P8E80F9AEF21F6940"
+          "uid": "${datasource}"
         },
         "definition": "label_values({namespace=\"$namespace\"}, stream)",
         "hide": 0,
@@ -986,6 +983,6 @@
   "timezone": "",
   "title": "Container Log Dashboard Steamulo",
   "uid": "fe2x7yak5t7xge",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
