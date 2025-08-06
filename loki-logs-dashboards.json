@@ -168,7 +168,6 @@
       "pluginVersion": "11.2.0",
       "targets": [
         {
-          RENAME
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
           "hide": false,
           "refId": "A"
