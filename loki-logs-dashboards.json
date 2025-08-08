@@ -828,10 +828,7 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "Loki",
-          "value": "Loki"
-        },
+        "current": {},
         "label": "Datasource",
         "name": "datasource",
         "options": [],
