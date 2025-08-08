@@ -828,6 +828,16 @@
   "templating": {
     "list": [
       {
+        "current": {},
+        "label": "Datasource",
+        "name": "datasource",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      },
+      {
         "current": {
           "selected": false,
           "text": "argocd",
