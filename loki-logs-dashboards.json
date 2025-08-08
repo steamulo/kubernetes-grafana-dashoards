@@ -18,9 +18,8 @@
   "description": "Container/Pod Log Dashboard(Loki as DataSource)",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 16966,
   "graphTooltip": 0,
-  "id": 13,
+  "id": 537,
   "links": [],
   "panels": [
     {
@@ -47,8 +46,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(31, 255, 7)",
-                "value": null
+                "color": "rgb(31, 255, 7)"
               },
               {
                 "color": "rgb(31, 255, 7)",
@@ -89,7 +87,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "": {
@@ -105,7 +103,7 @@
       "type": "stat"
     },
     {
-      "": {
+      "datasource": {
         "type": "loki",
         "uid": "${datasource}"
       },
@@ -127,8 +125,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -165,11 +162,14 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
+          "direction": "backward",
+          "editorMode": "code",
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"} |~ \"(?i)$searchable_pattern\")[$__interval]))",
           "hide": false,
+          "queryType": "range",
           "refId": "A"
         }
       ],
@@ -182,6 +182,10 @@
         "uid": "${datasource}"
       },
       "description": "Live logs is a like 'tail -f' in a real time",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 9,
         "w": 24,
@@ -191,6 +195,7 @@
       "id": 2,
       "options": {
         "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
         "enableLogDetails": true,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
@@ -199,6 +204,7 @@
         "sortOrder": "Descending",
         "wrapLogMessage": false
       },
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -214,15 +220,6 @@
       "type": "logs"
     },
     {
-      "aliasColors": {
-        "stderr": "#C4162A",
-        "stdout": "#37872D"
-      },
-      "breakPoint": "50%",
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
       "datasource": {
         "type": "loki",
         "uid": "${datasource}"
@@ -255,8 +252,6 @@
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 9,
@@ -264,18 +259,7 @@
         "y": 12
       },
       "id": 19,
-      "legend": {
-        "header": "Total Count",
-        "percentage": true,
-        "percentageDecimals": 2,
-        "show": true,
-        "sort": "total",
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "right",
       "maxDataPoints": 100,
-      "nullPointMode": "connected",
       "options": {
         "legend": {
           "displayMode": "list",
@@ -291,13 +275,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pieType": "pie",
-      "pluginVersion": "7.0.4",
-      "strokeWidth": "1.5",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -310,21 +293,13 @@
         }
       ],
       "title": "Total count of stderr / stdout pie",
-      "type": "piechart",
-      "valueName": "total"
+      "type": "piechart"
     },
     {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
       "datasource": {
         "type": "loki",
         "uid": "${datasource}"
       },
-      "decimals": 0,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -341,8 +316,6 @@
         },
         "overrides": []
       },
-      "fontSize": "80%",
-      "format": "short",
       "gridPos": {
         "h": 7,
         "w": 9,
@@ -351,17 +324,7 @@
       },
       "id": 20,
       "interval": "1m",
-      "legend": {
-        "header": "total count",
-        "percentage": true,
-        "show": true,
-        "sort": "total",
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "right",
       "maxDataPoints": "",
-      "nullPointMode": "connected",
       "options": {
         "legend": {
           "displayMode": "list",
@@ -377,13 +340,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pieType": "donut",
-      "pluginVersion": "6.4.3",
-      "strokeWidth": "0.4",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -395,8 +357,7 @@
         }
       ],
       "title": "Matched word: \"$searchable_pattern\" donut",
-      "type": "piechart",
-      "valueName": "total"
+      "type": "piechart"
     },
     {
       "datasource": {
@@ -424,8 +385,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -456,7 +416,7 @@
         "showThresholdMarkers": false,
         "sizing": "auto"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -520,8 +480,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -552,11 +511,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "6.4.3",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -619,8 +579,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -648,11 +607,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "6.4.3",
+      "pluginVersion": "12.0.2",
       "targets": [
         {
           "datasource": {
@@ -726,8 +686,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
-                "value": null
+                "color": "#299c46"
               },
               {
                 "color": "rgba(237, 129, 40, 0.89)",
@@ -818,8 +777,9 @@
       "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "1m",
-  "schemaVersion": 39,
+  "schemaVersion": 41,
   "tags": [
     "Loki",
     "Logging",
@@ -839,7 +799,6 @@
       },
       {
         "current": {
-          "selected": false,
           "text": "argocd",
           "value": "argocd"
         },
@@ -848,25 +807,17 @@
           "uid": "${datasource}"
         },
         "definition": "label_values({namespace=~\".+\"}, namespace)",
-        "hide": 0,
         "includeAll": false,
         "label": "Namespace",
-        "multi": false,
         "name": "namespace",
         "options": [],
         "query": "label_values({namespace=~\".+\"}, namespace)",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -875,10 +826,8 @@
           "uid": "${datasource}"
         },
         "definition": "",
-        "hide": 0,
         "includeAll": true,
         "label": "Job",
-        "multi": false,
         "name": "job",
         "options": [],
         "query": {
@@ -889,16 +838,10 @@
         },
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -907,25 +850,17 @@
           "uid": "${datasource}"
         },
         "definition": "label_values({namespace=\"$namespace\"}, pod)",
-        "hide": 0,
         "includeAll": true,
         "label": "Pod",
-        "multi": false,
         "name": "pod",
         "options": [],
         "query": "label_values({namespace=\"$namespace\"}, pod)",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -934,29 +869,20 @@
           "uid": "${datasource}"
         },
         "definition": "label_values({namespace=\"$namespace\"}, stream)",
-        "hide": 0,
         "includeAll": true,
         "label": "Stream",
-        "multi": false,
         "name": "stream",
         "options": [],
         "query": "label_values({namespace=\"$namespace\"}, stream)",
         "refresh": 2,
         "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       },
       {
         "current": {
-          "selected": true,
           "text": "",
           "value": ""
         },
-        "hide": 0,
         "label": "Search (case insensitive)",
         "name": "searchable_pattern",
         "options": [
@@ -967,7 +893,6 @@
           }
         ],
         "query": "",
-        "skipUrlSync": false,
         "type": "textbox"
       }
     ]
@@ -992,6 +917,5 @@
   "timezone": "",
   "title": "Container Log Dashboard Steamulo",
   "uid": "fe2x7yak5t7xge",
-  "version": 2,
-  "weekStart": ""
+  "version": 1
 }
