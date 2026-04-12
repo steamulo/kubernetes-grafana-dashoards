@@ -90,10 +90,6 @@
       "pluginVersion": "12.0.2",
       "targets": [
         {
-          "": {
-            "type": "loki",
-            "uid": "${datasource}"
-          },
           "expr": "sum(count_over_time(({namespace=\"$namespace\", stream=~\"$stream\", pod=~\"$pod\", job=~\"$job\"})[$__interval]))",
           "hide": false,
           "refId": "A"
@@ -916,6 +912,6 @@
   },
   "timezone": "",
   "title": "Container Log Dashboard Steamulo",
-  "uid": "fe2x7yak5t7xge",
+  "uid": "steamulo-k8s-logs",
   "version": 1
 }
