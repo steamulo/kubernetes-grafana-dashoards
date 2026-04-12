@@ -1590,7 +1590,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Traefik Official Kubernetes Dashboard Copy",
-  "uid": "85d4d008-b082-4f13-b55e-effdddf22d63",
+  "title": "Traefik Kubernetes Dashboard",
+  "uid": "stm-traefik-k8s-dashboard",
   "version": 9
 }
